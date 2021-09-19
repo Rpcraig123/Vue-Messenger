@@ -36,9 +36,13 @@ export default {
         this.isError = false
       }
       if (this.username.length && keycode !== 8) {
+        // Add try catch
         try {
+          // create a variable called res and store the response from FindUsername
+          // Provide FindUsername an argument of the username in state
+          // Store the message from the response in the usernameMessage state (you can access it via res.msg)
           const res = await FindUsername(this.username)
-
+          // set username message to res.msg
           this.usernameMessage = res.msg
           this.isError = false
         } catch (error) {
@@ -48,14 +52,17 @@ export default {
       }
     },
     async submitUsername() {
+      // make request to create user
       const user = await CreateUser(this.username)
       localStorage.setItem('user', JSON.stringify(user))
       this.user = user
       this.usernameMessage = ''
       this.isError = false
+      // Provided code
       this.$socket.emit('userConnected', { username: user.username })
     },
     async clearUser() {
+      // call Remove User
       await RemoveUser(this.user.id)
       localStorage.clear()
       this.user = null

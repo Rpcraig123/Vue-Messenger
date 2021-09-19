@@ -91,28 +91,14 @@ export default {
     }
   },
   methods: {
-    async handleUserLeave() {
-      this.$socket.emit('userLeft', { username: this.user.username })
-    },
-    clearUser() {
-      this.handleUserLeave()
-      this.$emit('clearUser')
-    },
-    handlePageScroll() {
-      const el = this.$el.querySelectorAll('.bubble')[this.messages.length - 1]
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
-    },
-    async fetchMessages() {
-      const messages = await GetMessages()
-      this.messages = messages
-      this.handlePageScroll()
-    },
-    handleMessage(e) {
-      this.messageContent = e.target.value
-    },
     async addMessage() {
+      // Create a variable called message and store the response from CreateMessage
+      // Provide CreateMessage an object for the request body that contains content and the userId by utilizing the provided table in the README
+      /**Insert Code Here */
+      // Uncomment the next line of code
+      // this.$socket.emit('userMessage', message)
+      // Add the message to the messages state using .push or the spread operator
+      // Reset the messageContent state back to an empty string
       const message = await CreateMessage({
         content: this.messageContent,
         userId: this.userId
@@ -121,6 +107,27 @@ export default {
       this.messages.push(message)
       this.messageContent = ''
     },
+    async fetchMessages() {
+      // Utilize GetMessages here and store the response as a variable called messages
+      // Update the messages state with the messages variable
+      const messages = await GetMessages()
+      this.messages = messages
+      this.handlePageScroll()
+    },
+    clearUser() {
+      this.$socket.emit('userLeft', { username: this.user.username })
+      this.$emit('clearUser')
+    },
+    handlePageScroll() {
+      const el = this.$el.querySelectorAll('.bubble')[this.messages.length - 1]
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    },
+    handleMessage(e) {
+      this.messageContent = e.target.value
+    },
+
     transformDate(value) {
       return `${new Date(value).toDateString()} ${new Date(
         value
