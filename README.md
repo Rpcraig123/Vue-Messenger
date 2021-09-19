@@ -67,6 +67,22 @@ You'll complete your work in the following methods:
 
 Follow the provided prompts and pseudo code in each of the functions to complete this task.
 
+### Part 3
+
+In this last and final section, we'll deploy our app to a service called `Vercel`. It is a service similar to Heroku, however we can only deploy **front end** code to this service.
+
+Follow the instructions laid out in the Vue documentation on how to deploy to Vercel: [Vue & Vercel](https://cli.vuejs.org/guide/deployment.html#vercel)
+
+A couple of notes:
+
+- Sign In/Sign Up using Github
+- **Make sure the Vercel bot can read private repos!**
+  - you can change this setting once you enable the Vercel bot under your profile `settings/applications`. An image is provided to view the correct settings.
+
+![vercel-bot](https://sei-r.s3.amazonaws.com/u4_hw_vue_messenger/vercel-bot.png)
+
+A new deployment will be triggered by a push to the `main` branch.
+
 ## Submission
 
 Test your code as you go, you should be able to:
@@ -80,8 +96,16 @@ Once you've finished testing your code, follow the instructions for deploying to
 
 Grab a few classmates and send each other some messages to test your application!
 
+You can view a full working version [Here](https://messenger-frontend.vercel.app/).
+
+### Requirements
+
+- All parts must work correctly
+- You must include the deployed link in your pull request
+
+**Pull Requests are due by 10AM EST**
+
 ## Resources
 
 - [SocketIO]
 - [Vercel]
-- []
