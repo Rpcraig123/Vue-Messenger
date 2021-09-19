@@ -40,7 +40,6 @@
 
 <script>
 import TitleBar from './TitleBar.vue'
-import { GetMessages, CreateMessage } from '../services/messages'
 
 export default {
   name: 'Messages',
@@ -99,19 +98,11 @@ export default {
       // this.$socket.emit('userMessage', message)
       // Add the message to the messages state using .push or the spread operator
       // Reset the messageContent state back to an empty string
-      const message = await CreateMessage({
-        content: this.messageContent,
-        userId: this.userId
-      })
-      this.$socket.emit('userMessage', message)
-      this.messages.push(message)
-      this.messageContent = ''
     },
     async fetchMessages() {
       // Utilize GetMessages here and store the response as a variable called messages
       // Update the messages state with the messages variable
-      const messages = await GetMessages()
-      this.messages = messages
+
       this.handlePageScroll()
     },
     clearUser() {

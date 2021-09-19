@@ -15,7 +15,7 @@
 <script>
 import Welcome from './components/Welcome.vue'
 import Messages from './components/Messages.vue'
-import { CreateUser, FindUsername, RemoveUser } from './services/users'
+
 export default {
   name: 'App',
   components: {
@@ -36,14 +36,10 @@ export default {
         this.isError = false
       }
       if (this.username.length && keycode !== 8) {
-        // Add try catch
         try {
           // create a variable called res and store the response from FindUsername
           // Provide FindUsername an argument of the username in state
           // Store the message from the response in the usernameMessage state (you can access it via res.msg)
-          const res = await FindUsername(this.username)
-          // set username message to res.msg
-          this.usernameMessage = res.msg
           this.isError = false
         } catch (error) {
           this.usernameMessage = error.response.data.msg
@@ -53,17 +49,18 @@ export default {
     },
     async submitUsername() {
       // make request to create user
-      const user = await CreateUser(this.username)
-      localStorage.setItem('user', JSON.stringify(user))
-      this.user = user
-      this.usernameMessage = ''
+      // Create a variable called user set the value to CreateUser
+      // Pass the username state to CreateUser as a string
+      // Uncomment the next line
+      //localStorage.setItem('user', JSON.stringify(user))
+      // Set the user state to your user variable
+      // Reset the usernameMessage state back to it's original value
       this.isError = false
-      // Provided code
-      this.$socket.emit('userConnected', { username: user.username })
+      // Uncomment the next line
+      // this.$socket.emit('userConnected', { username: user.username })
     },
     async clearUser() {
-      // call Remove User
-      await RemoveUser(this.user.id)
+      // Invoke RemoveUser and provide it the current user's id that is currently in state
       localStorage.clear()
       this.user = null
       this.username = ''
