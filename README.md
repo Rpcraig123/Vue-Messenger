@@ -107,5 +107,5 @@ You can view a full working version [Here](https://messenger-frontend.vercel.app
 
 ## Resources
 
-- [SocketIO]
-- [Vercel]
+- [SocketIO](https://socket.io/)
+- [Vercel](https://vercel.com/)
