@@ -37,6 +37,7 @@ export default {
       }
       if (this.username.length && keycode !== 8) {
         try {
+          // test
           // create a variable called res and store the response from FindUsername
           // Provide FindUsername an argument of the username in state
           // Store the message from the response in the usernameMessage state (you can access it via res.msg)
