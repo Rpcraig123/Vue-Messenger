@@ -15,7 +15,7 @@
 <script>
 import Welcome from './components/Welcome.vue'
 import Messages from './components/Messages.vue'
-
+import { CreateUser, FindUsername, RemoveUser } from './services/users'
 export default {
   name: 'App',
   components: {
@@ -37,10 +37,11 @@ export default {
       }
       if (this.username.length && keycode !== 8) {
         try {
-          // test
           // create a variable called res and store the response from FindUsername
           // Provide FindUsername an argument of the username in state
           // Store the message from the response in the usernameMessage state (you can access it via res.msg)
+          const res = FindUsername(username)
+          this.usernameMessage = res.msg
           this.isError = false
         } catch (error) {
           this.usernameMessage = error.response.data.msg
@@ -49,19 +50,23 @@ export default {
       }
     },
     async submitUsername() {
+      const user = CreateUser(this.username)
       // make request to create user
       // Create a variable called user set the value to CreateUser
       // Pass the username state to CreateUser as a string
       // Uncomment the next line
-      //localStorage.setItem('user', JSON.stringify(user))
+      localStorage.setItem('user', JSON.stringify(user))
+      this.user = user
+      this.usernameMessage = ''
       // Set the user state to your user variable
       // Reset the usernameMessage state back to it's original value
       this.isError = false
       // Uncomment the next line
-      // this.$socket.emit('userConnected', { username: user.username })
+      this.$socket.emit('userConnected', { username: user.username })
     },
     async clearUser() {
       // Invoke RemoveUser and provide it the current user's id that is currently in state
+      RemoveUser(this.user.id)
       localStorage.clear()
       this.user = null
       this.username = ''
