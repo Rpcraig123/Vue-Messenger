@@ -40,7 +40,7 @@ export default {
           // create a variable called res and store the response from FindUsername
           // Provide FindUsername an argument of the username in state
           // Store the message from the response in the usernameMessage state (you can access it via res.msg)
-          const res = FindUsername(username)
+          const res = await FindUsername(this.username)
           this.usernameMessage = res.msg
           this.isError = false
         } catch (error) {
@@ -50,7 +50,7 @@ export default {
       }
     },
     async submitUsername() {
-      const user = CreateUser(this.username)
+      const user = await CreateUser(this.username)
       // make request to create user
       // Create a variable called user set the value to CreateUser
       // Pass the username state to CreateUser as a string

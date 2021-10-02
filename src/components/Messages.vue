@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     async addMessage() {
-      const message = CreateMessage({
+      let message = await CreateMessage({
         content: this.messageContent,
         userId: this.userId
       })
@@ -107,7 +107,7 @@ export default {
       this.messageContent = ''
     },
     async fetchMessages() {
-      const messages = GetMessages()
+      const messages = await GetMessages()
       this.messages = messages
       // Utilize GetMessages here and store the response as a variable called messages
       // Update the messages state with the messages variable
