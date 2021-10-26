@@ -13,9 +13,10 @@ A messenger app built using web sockets that allowed students in our software im
 
 >## *Getting Started*
 1. Click on the Deployed Link above to navigate to the deployed application.
-2. The game will start with the first player playing an X. The place your shape, simply click one of the Tic-Tac-Toe cells.
-3. Player two will then place an O on one of the remaining cells. Continue playing the game like normal.
-4. Once you are finished, a winner will be declared and the user can reset the game if they so choose. The game can also be reset at any time.
+2. Create an account by entering a username. *The App will prompt you if that username is available!*
+3. Click "Create Account" and then the will be logged-in to the messenger app. *Your username should be displayed in the top left corner of the screen.*
+4. To send a message, type something into the message input at the bottom of the screen, then click "send". *Your message should then appear at the bottom of the feed in blue!*
+5. When you are finished, click the "Log Out" button in the top right corner of the screen. *You will then be navigated back to the sign in page!*
 
 ---
 
